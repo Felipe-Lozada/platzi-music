@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  public message: string;
+
   constructor() {}
+
+  printLol() {
+    this.message = 'Lol';
+  }
 
 }
