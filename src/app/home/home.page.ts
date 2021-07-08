@@ -7,12 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  public message: string;
-
+  slideOpts = {
+    initialSlide: 0,
+    slidePerView: 1,
+    centeredSlides: true,
+    speed: 400
+  };
   constructor() {}
-
-  printLol() {
-    this.message = 'Lol';
-  }
 
 }
