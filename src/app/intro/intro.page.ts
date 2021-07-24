@@ -65,8 +65,10 @@ export class IntroPage implements OnInit {
   }
 
   onCloseSlides() {
+    this.storage.create();
     this.storage.set('isIntroShowed', true);
     this.router.navigateByUrl('/home');
+    console.log('x');
   }
 
 }

@@ -8,7 +8,6 @@ import { IntroPageRoutingModule } from './intro-routing.module';
 
 import { IntroPage } from './intro.page';
 
-import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   imports: [
@@ -16,7 +15,6 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     FormsModule,
     IonicModule,
     IntroPageRoutingModule,
-    IonicStorageModule.forRoot()
   ],
   declarations: [IntroPage]
 })
