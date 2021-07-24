@@ -3,15 +3,25 @@
     <img src="../../assets/img/platzylogo.png" alt="logo de la app de musica">
   </figure>
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-    <ion-item>
+    <ion-item ciolor="dark">
       <ion-label position="floating"><ion-icon name="mail"></ion-icon> E-Mail <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="email" type="text"></ion-input>
+      <ion-input required formControlName="email" type="email"></ion-input>
     </ion-item>
-    <ion-item>
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        {{validation.message}}
+      </ng-container>
+    </div>
+    <ion-item ciolor="dark">
       <ion-label position="floating"><ion-icon name="key"></ion-icon>Password <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="password" type="text"></ion-input>
+      <ion-input required formControlName="password" type="password"></ion-input>
     </ion-item>
-    <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid">
+    <div class="validation-error">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        {{validation.message}}
+      </ng-container>
+    </div>
+    <ion-button expand="full" color="primary" type="submit" [disabled]="loginForm.invalid">
       <ion-icon name="enter" slot="end"></ion-icon> Login
     </ion-button>
   </form>
