@@ -16,7 +16,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     FormsModule,
     IonicModule,
     IntroPageRoutingModule,
-    IonicStorageModule.forRoot()]
+    IonicStorageModule.forRoot()
   ],
   declarations: [IntroPage]
 })
