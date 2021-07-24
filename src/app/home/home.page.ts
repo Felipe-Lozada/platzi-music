@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
+/* eslint-disable max-len */
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,12 +9,7 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  slideOpts = {
-    initialSlide: 0,
-    slidePerView: 1,
-    centeredSlides: true,
-    speed: 400
-  };
+
   constructor() {}
 
 }

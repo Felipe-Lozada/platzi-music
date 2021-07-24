@@ -1,0 +1,16 @@
+<ion-content [fullscreen]="true" color="dark" padding>
+
+  <ion-slides mode="ios" pager="ios" scrollbar="ios" [options]="slideOpts">
+
+    <ion-slide *ngFor="let slide of slides">
+      <ion-icon slot="end" name="close" (click)="onCloseSlides()"></ion-icon>
+      <img src="assets/img/platzylogo.png" alt="logo">
+      <h1>{{slide.title}}</h1>
+      <h2>{{slide.subtitle}}</h2>
+      <p>{{slide.description}}</p>
+      <ion-icon name="{{slide.icon}}"></ion-icon>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>
