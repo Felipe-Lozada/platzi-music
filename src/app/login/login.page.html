@@ -1,9 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true" color="dark" padding>
+  <figure class="ion-text-center">
+    <img src="../../assets/img/platzylogo.png" alt="logo de la app de musica">
+  </figure>
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
+    <ion-item>
+      <ion-label position="floating"><ion-icon name="mail"></ion-icon> E-Mail <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="email" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"><ion-icon name="key"></ion-icon>Password <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required formControlName="password" type="text"></ion-input>
+    </ion-item>
+    <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid">
+      <ion-icon name="enter" slot="end"></ion-icon> Login
+    </ion-button>
+  </form>
 </ion-content>
