@@ -5,23 +5,29 @@
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
     <ion-item ciolor="dark">
       <ion-label position="floating"><ion-icon name="mail"></ion-icon> E-Mail <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="email" type="email"></ion-input>
+      <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
     <div class="validation-error">
-      <ng-container *ngFor="let validation of validation_messages.email">
-        {{validation.message}}
+      <ng-container *ngFor="let validation of validationMessage.email">
+        <div text-center *ngIf="(loginForm.get('email').hasError(validation.type) && loginForm.get('email').dirty)
+        ||loginForm.get('email').touched">
+          <h5><strong>{{validation.message}}</strong></h5>
+        </div>
       </ng-container>
     </div>
     <ion-item ciolor="dark">
       <ion-label position="floating"><ion-icon name="key"></ion-icon>Password <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required formControlName="password" type="password"></ion-input>
+      <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
-    <div class="validation-error">
-      <ng-container *ngFor="let validation of validation_messages.password">
-        {{validation.message}}
+    <div text-center class="validation-error">
+      <ng-container *ngFor="let validation of validationMessage.password">
+        <div *ngIf="(loginForm.get('password').hasError(validation.type) && loginForm.get('password').dirty)
+        || loginForm.get('password').touched">
+          <h5><strong>{{validation.message}}</strong></h5>
+        </div>
       </ng-container>
     </div>
-    <ion-button expand="full" color="primary" type="submit" [disabled]="loginForm.invalid">
+    <ion-button shape="round" expand="full" color="success" type="submit" [disabled]="loginForm.invalid">
       <ion-icon name="enter" slot="end"></ion-icon> Login
     </ion-button>
   </form>
