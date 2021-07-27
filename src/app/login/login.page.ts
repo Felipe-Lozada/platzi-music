@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationServiceService } from '../services/authentication-service.service';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,11 @@ export class LoginPage implements OnInit {
 
   errorMessage = '';
 
-  constructor(private formBuider: FormBuilder) {
+  constructor(
+      private formBuider: FormBuilder,
+      private authService: AuthenticationServiceService,
+      private toastCtrl: ToastController
+    ) {
     this.loginForm = this.formBuider.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
@@ -38,6 +44,28 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  loginUser(credentials){}
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastCtrl.create({
+      message,
+      color,
+      mode: 'ios',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  loginUser(credentials){
+    this.authService.loginUser(credentials)
+      .then((res: any) => {
+        console.table(res);
+        this.presentToast(res.message, 'success');
+      })
+      .catch((error: any) => {
+        console.table(error);
+        this.presentToast(error.message, 'danger');
+      });
+  }
+
+  goToRegister(){}
 
 }

@@ -1,9 +1,9 @@
-<ion-content [fullscreen]="true" color="dark" padding>
+<ion-content [fullscreen]="true" color="dark" padding class="container">
   <figure class="ion-text-center">
     <img src="../../assets/img/platzylogo.png" alt="logo de la app de musica">
   </figure>
   <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
-    <ion-item ciolor="dark">
+    <ion-item color="dark">
       <ion-label position="floating"><ion-icon name="mail"></ion-icon> E-Mail <ion-text color="danger">*</ion-text></ion-label>
       <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
@@ -11,11 +11,11 @@
       <ng-container *ngFor="let validation of validationMessage.email">
         <div text-center *ngIf="(loginForm.get('email').hasError(validation.type) && loginForm.get('email').dirty)
         ||loginForm.get('email').touched">
-          <h5><strong>{{validation.message}}</strong></h5>
+          <p>{{validation.message}}</p>
         </div>
       </ng-container>
     </div>
-    <ion-item ciolor="dark">
+    <ion-item color="dark">
       <ion-label position="floating"><ion-icon name="key"></ion-icon>Password <ion-text color="danger">*</ion-text></ion-label>
       <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
@@ -23,7 +23,7 @@
       <ng-container *ngFor="let validation of validationMessage.password">
         <div *ngIf="(loginForm.get('password').hasError(validation.type) && loginForm.get('password').dirty)
         || loginForm.get('password').touched">
-          <h5><strong>{{validation.message}}</strong></h5>
+          <p>{{validation.message}}</p>
         </div>
       </ng-container>
     </div>
@@ -32,3 +32,7 @@
     </ion-button>
   </form>
 </ion-content>
+
+<ion-footer text-center>
+  <ion-button (click)="goToRegister()" fill="outline" shape="round" expand="full" color="success">Click para registrar</ion-button>
+</ion-footer>
