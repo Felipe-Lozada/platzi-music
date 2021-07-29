@@ -16,4 +16,14 @@ export class AuthenticationServiceService {
       }
     });
   }
+
+  registerUser(credentials){
+    return new Promise ((resolve, reject) => {
+      if(credentials) {
+        resolve({status: 'Ok', code: 200, message: 'Registro Existoso'});
+      } else {
+        reject({status: 'Error', code: 500, message: 'Error Intente mas tarde'});
+      }
+    });
+  }
 }

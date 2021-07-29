@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationServiceService } from '../services/authentication-service.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -22,12 +22,16 @@ export class LoginPage implements OnInit {
     ]
   };
 
-  errorMessage = '';
+  errorMessage = {
+    message: '',
+    color: ''
+  };
 
   constructor(
       private formBuider: FormBuilder,
       private authService: AuthenticationServiceService,
-      private toastCtrl: ToastController
+      private toastCtrl: ToastController,
+      private navCtrl: NavController
     ) {
     this.loginForm = this.formBuider.group({
       email: new FormControl('', Validators.compose([
@@ -58,14 +62,20 @@ export class LoginPage implements OnInit {
     this.authService.loginUser(credentials)
       .then((res: any) => {
         console.table(res);
-        this.presentToast(res.message, 'success');
+        //this.presentToast(res.message, 'success');
+        this.errorMessage.color = 'success';
+        this.errorMessage.message = res.message;
       })
       .catch((error: any) => {
         console.table(error);
-        this.presentToast(error.message, 'danger');
+        //this.presentToast(error.message, 'danger');
+        this.errorMessage.color = 'danger';
+        this.errorMessage.message = error.message;
       });
   }
 
-  goToRegister(){}
+  goToRegister(){
+    this.navCtrl.navigateForward('register');
+  }
 
 }

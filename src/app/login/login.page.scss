@@ -1,15 +1,19 @@
 .container{ 
     width: 100%
 }
+.container picture{
+    width: 100%;
+    height: 15%;
+}
 
 form{
     padding: 10px;
     width: 100%;
-    height: 60%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 form ion-item{
@@ -34,4 +38,29 @@ form ion-item ion-label {
 
 ion-button{
     margin: 5px 0;
+}
+
+.log-btn{
+    width: 100%;
+    border-radius: 5px;
+    --border-radius: 5px;
+}
+
+.error-msg{
+    width: 100%;
+    height: auto;
+    margin: 5px 0;
+    padding: 5px;
+    text-align: center;
+}
+
+ion-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+ion-footer ion-button{
+    width: 90%;
 }
